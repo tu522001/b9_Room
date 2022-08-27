@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import androidx.lifecycle.asLiveData
 
 class UserViewModel(application: Application): AndroidViewModel(application) {
 
@@ -40,6 +41,10 @@ class UserViewModel(application: Application): AndroidViewModel(application) {
         viewModelScope.launch(Dispatchers.IO){
             repository.deleteAllUsers()
         }
+    }
+
+    fun searchDatabase(searchQuery: String): LiveData<List<User>> {
+        return repository.searchDatabase(searchQuery).asLiveData()
     }
 
 }

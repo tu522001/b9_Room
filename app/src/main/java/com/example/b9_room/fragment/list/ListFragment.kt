@@ -71,4 +71,5 @@ class ListFragment : Fragment() {
         builder.setMessage("Are you sure you want to delete everything?")
         builder.create().show()
     }
+
 }
